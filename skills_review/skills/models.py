@@ -16,7 +16,7 @@ class Skill(models.Model):
 
 
 class Suggestion(models.Model):
-    skill = models.ForeignKey('Skill')
-    user = models.ForeignKey('User')
+    user = models.ForeignKey(User, related_name="suggestions", on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, related_name="suggestions", on_delete=models.CASCADE)
     action = models.CharField(max_length=256)
     comments = models.TextField()
