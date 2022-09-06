@@ -5,3 +5,7 @@ from . import models
 
 def index_view(request):
     return render(request, "index.html")
+
+def skills_view(request):
+    skills = models.Skill.objects.all()
+    return render(request, "hierarchy.html", {'skills': skills})
