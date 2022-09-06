@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 from django_use_email_as_username.models import BaseUser, BaseUserManager
 
 
@@ -13,8 +14,15 @@ class User(BaseUser):
 
 class Skill(models.Model):
     name = models.CharField(max_length=256)
+    slug = models.CharField(max_length=256)
     level_1_name = models.CharField(max_length=256)
     level_2_name = models.CharField(max_length=256)
+
+
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name.replace("|", "_"))
+        return super().save(*args, **kwargs)
 
 
 class SkillSentence(models.Model):
