@@ -16,13 +16,26 @@
         <div class="m-auto bg-white p-4 rounded-md min-w-[545px] shadow-sm">
           <h1 class="text-3xl font-bold">Skills Review</h1>
 
-          <ul>
-            {% for skill in skills %}
-              <li>
-                {{skill.name}}
-              </li>
-            {% endfor %}
-          </ul>
+          {% for first_level_name in skills_map %}
+
+            <h3>{{first_level_name}}</h3>
+            <ul class="list-disc">
+              {% for second_level_name in skills_map[first_level_name] %}
+                <li>
+                  {{second_level_name}}
+                  <ul class="list-disc list-inside">
+                    {% for skill_name in skills_map[first_level_name][second_level_name] %}
+                      <li>
+                        {{skill_name}}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endfor %}
+            </ul>
+            <hr>
+          {% endfor %}
+
 
         </div>
       </div>
