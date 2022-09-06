@@ -11,12 +11,8 @@ class User(BaseUser):
         super().save(*args, **kwargs)
 
 
-class Skill(models.Model):
-    name = models.CharField(max_length=256, null=True, blank=True)
-
-
 class Suggestion(models.Model):
     user = models.ForeignKey(User, related_name="suggestions", on_delete=models.CASCADE)
-    skill = models.ForeignKey(Skill, related_name="suggestions", on_delete=models.CASCADE)
+    skill = models.CharField(max_length=256)
     action = models.CharField(max_length=256)
     comments = models.TextField()
