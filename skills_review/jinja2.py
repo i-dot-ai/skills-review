@@ -1,6 +1,7 @@
 import jinja2
 from django.templatetags.static import static
 from django.urls import reverse
+from django.utils.text import slugify
 
 
 def environment(**options):
@@ -15,6 +16,7 @@ def environment(**options):
         {
             "static": static,
             "url": reverse,
+            "slugify": slugify,
         }
     )
     return env
