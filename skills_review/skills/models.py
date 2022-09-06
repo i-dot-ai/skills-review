@@ -13,8 +13,8 @@ class User(BaseUser):
 
 
 class Skill(models.Model):
-    name = models.CharField(max_length=256)
-    slug = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, unique=True)
+    slug = models.CharField(max_length=256, unique=True, primary_key=True)
     level_1_name = models.CharField(max_length=256)
     level_2_name = models.CharField(max_length=256)
 
