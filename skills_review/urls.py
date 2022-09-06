@@ -5,7 +5,6 @@ from skills_review.skills import views
 
 urlpatterns = [
     path("", views.index_view, name="index"),
-    path("home/", views.homepage_view, name="homepage"),
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
 ]
