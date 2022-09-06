@@ -24,3 +24,9 @@ def skills_view(request):
     skills = random.sample(list(skills), k=len(skills))
     skills_map = make_mapping(skills)
     return render(request, "skills.html", {'skills_map': skills_map})
+
+
+def skill_view(request, skill_slug):
+    skill = models.Skill.objects.get(slug=skill_slug)
+    sentences = list(skill.sentences.all())
+    return render(request, "skill.html", {'skill': skill, 'sentences': sentences})
