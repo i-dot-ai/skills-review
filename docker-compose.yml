@@ -1,7 +1,7 @@
 version: '3'
 
 volumes:
-  local_postgres_data: {}
+  skills_review_local_postgres_data: {}
 
 services:
   web:
@@ -20,7 +20,7 @@ services:
   db:
     image: postgres:13
     volumes:
-      - local_postgres_data:/var/lib/postgresql/data:Z
+      - skills_review_local_postgres_data:/var/lib/postgresql/data:Z
     env_file:
       - ./envs/web
     ports:
