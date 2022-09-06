@@ -12,11 +12,14 @@ class User(BaseUser):
 
 
 class Skill(models.Model):
-    name = models.CharField(max_length=256, null=True, blank=True)
+    name = models.CharField(max_length=256)
+    level_1_name = models.CharField(max_length=256)
+    level_2_name = models.CharField(max_length=256)
 
 
 class SkillSentence(models.Model):
     skill = models.ForeignKey(Skill, related_name="sentences", on_delete=models.CASCADE)
+    text = models.CharField(max_length=256)
 
 
 class Suggestion(models.Model):
