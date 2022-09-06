@@ -11,7 +11,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ./.envs/web
+      - ./envs/web
     volumes:
       - ./:/app/:z
     ports:
@@ -22,7 +22,7 @@ services:
     volumes:
       - local_postgres_data:/var/lib/postgresql/data:Z
     env_file:
-      - ./.envs/web
+      - ./envs/web
     ports:
       - "5432:5432"
 

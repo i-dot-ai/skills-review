@@ -10,7 +10,7 @@ STATIC_ROOT = STATIC_ROOT
 DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = [
-    "people-survey-develop.london.cloudapps.digital",
+    "skills-review-develop.london.cloudapps.digital",
     "localhost",
     "127.0.0.1",
 ]
@@ -19,7 +19,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "skills_review.survey",
+    "skills_review.skills",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -127,7 +127,7 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-AUTH_USER_MODEL = "survey.User"
+AUTH_USER_MODEL = "skills.User"
 
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True

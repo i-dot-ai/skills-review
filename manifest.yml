@@ -1,6 +1,6 @@
 ---
 applications:
-- name: people-survey-develop
+- name: skills-review-develop
   memory: 512M
   buildpacks:
   - python_buildpack
