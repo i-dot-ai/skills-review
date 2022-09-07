@@ -1,63 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <title>Skills Review</title>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="{{static('app.css')}}" type="text/css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
-  </head>
+<head>
+  <title>Skills Review</title>
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="{{static('app.css')}}" type="text/css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+</head>
 
-  <body>
-    <main>
+<body>
+  <main>
+    <div class="max-w-2xl p-4 m-auto bg-white rounded-md shadow-sm md:mb-24 md:mt-24">
+      <a class="underline text-[#1976D2] hover:text-[#064B9A]" href="/skills">← Back to Skills Review</a>
+      <h1 class="mt-6 mb-2 text-3xl font-bold">{{skill.name}}</h1>
 
-      <div class="flex h-screen">
-        <div class="m-auto bg-white p-4 rounded-md min-w-[545px] shadow-sm">
-          <h1 class="text-3xl font-bold">{{skill.name}}</h1>
+      <p class="text-xl">
+        <span class="text-lg font-bold text-[#000]">Level 1:</span>
+        {{skill.level_1_name}}
+      </p>
+      <p class="text-xl"><span class="text-lg font-bold text-[#000]">Level 2:</span>
+        {{skill.level_2_name}}
+      </p>
 
-          <p>Level 1: {{skill.level_1_name}}</p>
-          <p>Level 2: {{skill.level_2_name}}</p>
+      <h3 class="mt-6 mb-4 text-2xl text-[#666666]">Sample Sentences</h3>
 
-          <h3>Sample Sentences</h3>
+      <ul class="space-y-2 list-disc list-inside">
+        {% for sentence in sentences %}
+        <li>{{sentence.text}}</li>
+        {% endfor %}
+      </ul>
 
-          <ul>
-            {% for sentence in sentences %}
-              <li>{{sentence.text}}</li>
-            {% endfor %}
-          </ul>
-
-          <form method="POST">
-
-            <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
-
-            <label for="action">Action</label>
-            <select name="action">
-              <option value="" selected></option>
-              {% for action in actions %}
-                <option value="{{action}}">{{action}}</option>
-              {% endfor %}
-            </select>
-            <label for="comments">Comments</label>
-            <textarea name="comments"></textarea>
-
-            <input type="submit">
-
-          </form>
-
-          {% if suggestions %}
-          <div class="m-auto bg-white p-4 rounded-md min-w-[545px] shadow-sm">
-            <h2>Suggestions</h2>
-            {% for suggestion in suggestions %}
-              <p>Action: {{suggestion.action}}</p>
-              <p>{{suggestion.comments}}</p>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
+      <div class="my-6">
+        <hr />
       </div>
 
-    </main>
-  </body>
+      <form method="POST" class="skill">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
+        <div class="flex flex-col my-6 space-y-4">
+          <div class="flex flex-col">
+            <label for="action">Action</label>
+            <select name="action">
+              <option value="" selected>Please select one</option>
+              {% for action in actions %}
+              <option value="{{action}}">{{action}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="flex flex-col">
+            <label for="comments">Comments</label>
+            <textarea name="comments"></textarea>
+          </div>
+        </div>
+
+
+        <div class="flex justify-end">
+          <input type="submit" class="px-4 py-2 rounded-md bg-[#1976D2] text-white hover:bg-[#064B9A]">
+        </div>
+      </form>
+
+      {% if suggestions %}
+      <section class="mt-4">
+        <h2 class="mb-4 text-2xl">Suggestions</h2>
+        {% for suggestion in suggestions %}
+        <div class="py-2.5 space-y-1 border-t">
+          <p><span class="font-bold">Action</span>: {{suggestion.action}}</p>
+          <p>{{suggestion.comments}}</p>
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+    </div>
+
+  </main>
+</body>
 
 </html>

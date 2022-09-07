@@ -51,3 +51,19 @@ body {
   margin-bottom: -16px;
   color: #D32F2F;
 }
+
+form.skill select {
+  border-radius: 4px;
+  padding: 12px;
+  border: solid 1px #000;
+}
+
+form.skill textarea {
+  border-radius: 4px;
+  padding: 12px;
+  border: solid 1px #000;
+}
+
+form.skill label {
+  margin-bottom: 8px;
+}
