@@ -27,6 +27,12 @@
                     {% for skill in skills_map[first_level_name][second_level_name] %}
                       <li>
                         <a href="{{url('skill', kwargs={'skill_slug': slugify(skill.name)})}}">{{skill.name}}</a>
+                        {% if skill.has_delete_action %}
+                          <span class="inline-block py-1 px-1.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded ml-2">!!</span>
+                        {% endif %}
+                        {% if skill.has_rename_action %}
+                          <span class="inline-block py-1 px-1.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-yellow-500 text-white rounded ml-2">??</span>
+                        {% endif %}
                       </li>
                     {% endfor %}
                   </ul>
