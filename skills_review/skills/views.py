@@ -29,4 +29,5 @@ def skills_view(request):
 def skill_view(request, skill_slug):
     skill = models.Skill.objects.get(slug=skill_slug)
     sentences = list(skill.sentences.all())
-    return render(request, "skill.html", {'skill': skill, 'sentences': sentences})
+    actions = models.Suggestion.Action.values
+    return render(request, "skill.html", {'skill': skill, 'sentences': sentences, 'actions': actions})
