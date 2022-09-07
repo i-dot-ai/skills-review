@@ -1,6 +1,6 @@
 import random
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
 
 from . import models
@@ -28,6 +28,13 @@ def skills_view(request):
 
 def skill_view(request, skill_slug):
     skill = models.Skill.objects.get(slug=skill_slug)
-    sentences = list(skill.sentences.all())
-    actions = models.Suggestion.Action.values
-    return render(request, "skill.html", {'skill': skill, 'sentences': sentences, 'actions': actions})
+    if request.method == "GET":
+        sentences = list(skill.sentences.all())
+        actions = models.Suggestion.Action.values
+        return render(request, "skill.html", {'skill': skill, 'sentences': sentences, 'actions': actions})
+    else:
+        data = request.POST
+        user = request.user.is_authenticated and request.user or None
+        suggestion = models.Suggestion(user=user, skill=skill, action=data['action'], comments=data['comments'])
+        suggestion.save()
+        return redirect("skill", skill_slug= skill_slug)
