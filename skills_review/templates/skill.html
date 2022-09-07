@@ -27,6 +27,22 @@
             {% endfor %}
           </ul>
 
+          <form method="POST">
+
+            <label for="action">Action</label>
+            <select name="action">
+              <option value="" selected></option>
+              {% for action in actions %}
+                <option value="{{action}}">{{action}}</option>
+              {% endfor %}
+            </select>
+            <label for="comments">Comments</label>
+            <textarea name="comments"></textarea>
+
+            <input type="submit">
+
+          </form>
+
         </div>
       </div>
 
