@@ -46,3 +46,11 @@ class Suggestion(models.Model):
     skill = models.ForeignKey(Skill, related_name="suggestions", on_delete=models.CASCADE)
     action = models.CharField(max_length=256, choices=Action.choices, blank=True, null=True)
     comments = models.TextField()
+
+    def save(self, *args, **kwargs):
+        if self.action == self.Action.NOT_SKILL:
+            self.skill.has_delete_action = True
+        elif self.action == self.Action.CHANGE_NAME:
+            self.skill.has_rename_action = True
+        self.skill.save()
+        return super().save(*args, **kwargs)
