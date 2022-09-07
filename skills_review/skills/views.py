@@ -30,10 +30,11 @@ def skill_view(request, skill_slug):
     if request.method == "GET":
         sentences = list(skill.sentences.all())
         actions = models.Suggestion.Action.values
+        suggestions = models.Suggestion.objects.filter(skill=skill).all()
         return render(
             request,
             "skill.html",
-            {"skill": skill, "sentences": sentences, "actions": actions},
+            {"skill": skill, "sentences": sentences, "actions": actions, 'suggestions': suggestions},
         )
     else:
         data = request.POST
