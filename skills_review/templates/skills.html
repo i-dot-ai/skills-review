@@ -24,9 +24,9 @@
                 <li>
                   {{second_level_name}}
                   <ul class="list-disc list-inside">
-                    {% for skill_name in skills_map[first_level_name][second_level_name] %}
+                    {% for skill in skills_map[first_level_name][second_level_name] %}
                       <li>
-                        <a href="{{url('skill', kwargs={'skill_slug': slugify(skill_name)})}}">{{skill_name}}</a>
+                        <a href="{{url('skill', kwargs={'skill_slug': slugify(skill.name)})}}">{{skill.name}}</a>
                       </li>
                     {% endfor %}
                   </ul>

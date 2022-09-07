@@ -14,7 +14,7 @@ def make_mapping(skills):
     for skill in skills:
         mapping.setdefault(skill.level_1_name.strip(), {})
         mapping[skill.level_1_name].setdefault(skill.level_2_name.strip(), [])
-        mapping[skill.level_1_name][skill.level_2_name].append(skill.name.strip())
+        mapping[skill.level_1_name][skill.level_2_name].append(skill)
     return mapping
 
 
