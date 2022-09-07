@@ -17,6 +17,8 @@ class Skill(models.Model):
     slug = models.CharField(max_length=256, unique=True, primary_key=True)
     level_1_name = models.CharField(max_length=256)
     level_2_name = models.CharField(max_length=256)
+    has_delete_action = models.BooleanField(blank=True, null=True)
+    has_rename_action = models.BooleanField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name.replace("|", "_"))
