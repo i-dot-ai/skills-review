@@ -29,6 +29,8 @@
 
           <form method="POST">
 
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
+
             <label for="action">Action</label>
             <select name="action">
               <option value="" selected></option>
