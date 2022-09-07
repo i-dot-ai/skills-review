@@ -5,12 +5,17 @@ from skills_review.skills import models
 
 
 def key(row):
-    return (row['level_B_name'], row['level_C_name'], row['clean skill name'], row['skill_name'])
+    return (
+        row["level_B_name"],
+        row["level_C_name"],
+        row["clean skill name"],
+        row["skill_name"],
+    )
 
 
 def process_file(file_object):
     reader = csv.DictReader(file_object)
-    lines = (line for line in reader if line['text'])
+    lines = (line for line in reader if line["text"])
     lines = sorted(lines, key=key)
     groups = itertools.groupby(lines, key=key)
 
@@ -20,7 +25,7 @@ def process_file(file_object):
         skill.save()
 
         for row in group:
-            sentence = models.SkillSentence(skill=skill, text=row['text'])
+            sentence = models.SkillSentence(skill=skill, text=row["text"])
             sentence.save()
-    
+
     return lines

@@ -18,8 +18,6 @@ class Skill(models.Model):
     level_1_name = models.CharField(max_length=256)
     level_2_name = models.CharField(max_length=256)
 
-
-
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name.replace("|", "_"))
         return super().save(*args, **kwargs)
@@ -36,7 +34,13 @@ class Suggestion(models.Model):
         CHANGE_NAME = ("Change name", "Change name")
         NONE = ("None", "None")
 
-    user = models.ForeignKey(User, related_name="suggestions", on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(
+        User,
+        related_name="suggestions",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
     skill = models.ForeignKey(Skill, related_name="suggestions", on_delete=models.CASCADE)
     action = models.CharField(max_length=256, choices=Action.choices, blank=True, null=True)
     comments = models.TextField()
