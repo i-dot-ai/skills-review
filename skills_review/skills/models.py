@@ -34,6 +34,8 @@ class Suggestion(models.Model):
     class Action(models.TextChoices):
         NOT_SKILL = ("Not a skill", "Not a skill")
         CHANGE_NAME = ("Change name", "Change name")
+        SEPARATE = ("Separate skills", "Separate skills")
+        FIX_CATEGORY = ("Fix category", "Fix category")
         NONE = ("None", "None")
 
     user = models.ForeignKey(
