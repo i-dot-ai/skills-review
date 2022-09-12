@@ -34,7 +34,7 @@ def skill_view(request, skill_slug):
         return render(
             request,
             "skill.html",
-            {"skill": skill, "sentences": sentences, "flags": flags, 'suggestions': suggestions},
+            {"skill": skill, "sentences": sentences, "flags": flags, "suggestions": suggestions},
         )
     else:
         data = request.POST
