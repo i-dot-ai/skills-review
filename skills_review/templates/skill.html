@@ -39,11 +39,11 @@
         <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
         <div class="flex flex-col my-6 space-y-4">
           <div class="flex flex-col">
-            <label for="action">Action</label>
-            <select name="action">
+            <label for="flag">Flag</label>
+            <select name="flag">
               <option value="" selected>Please select one</option>
-              {% for action in actions %}
-              <option value="{{action}}">{{action}}</option>
+              {% for flag in flags %}
+              <option value="{{flag}}">{{flag}}</option>
               {% endfor %}
             </select>
           </div>
@@ -64,7 +64,7 @@
         <h2 class="mb-4 text-2xl">Suggestions</h2>
         {% for suggestion in suggestions %}
         <div class="py-2.5 space-y-1 border-t">
-          <p><span class="font-bold">Action</span>: {{suggestion.action}}</p>
+          <p><span class="font-bold">Flag</span>: {{suggestion.flag}}</p>
           <p>{{suggestion.comments}}</p>
         </div>
         {% endfor %}

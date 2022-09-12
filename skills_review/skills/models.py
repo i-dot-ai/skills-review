@@ -17,8 +17,8 @@ class Skill(models.Model):
     slug = models.CharField(max_length=256, unique=True, primary_key=True)
     level_1_name = models.CharField(max_length=256)
     level_2_name = models.CharField(max_length=256)
-    has_delete_action = models.BooleanField(blank=True, null=True)
-    has_rename_action = models.BooleanField(blank=True, null=True)
+    has_delete_flag = models.BooleanField(blank=True, null=True)
+    has_rename_flag = models.BooleanField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name.replace("|", "_"))
@@ -31,11 +31,11 @@ class SkillSentence(models.Model):
 
 
 class Suggestion(models.Model):
-    class Action(models.TextChoices):
+    class Flag(models.TextChoices):
         NOT_SKILL = ("Not a skill", "Not a skill")
-        CHANGE_NAME = ("Change name", "Change name")
-        SEPARATE = ("Separate skills", "Separate skills")
-        FIX_CATEGORY = ("Fix category", "Fix category")
+        WRONG_NAME = ("Wrong name", "Wrong name")
+        MULTIPLE_SKILLS = ("Multiple skills", "Multiple skills")
+        WRONG_CATEGORY = ("Wrong category", "Wrong category")
         NONE = ("None", "None")
 
     user = models.ForeignKey(
@@ -46,13 +46,13 @@ class Suggestion(models.Model):
         null=True,
     )
     skill = models.ForeignKey(Skill, related_name="suggestions", on_delete=models.CASCADE)
-    action = models.CharField(max_length=256, choices=Action.choices, blank=True, null=True)
+    flag = models.CharField(max_length=256, choices=Flag.choices, blank=True, null=True)
     comments = models.TextField()
 
     def save(self, *args, **kwargs):
-        if self.action == self.Action.NOT_SKILL:
-            self.skill.has_delete_action = True
-        elif self.action == self.Action.CHANGE_NAME:
-            self.skill.has_rename_action = True
+        if self.flag == self.Flag.NOT_SKILL:
+            self.skill.has_delete_flag = True
+        elif self.flag == self.Flag.CHANGE_NAME:
+            self.skill.has_rename_flag = True
         self.skill.save()
         return super().save(*args, **kwargs)

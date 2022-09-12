@@ -29,16 +29,16 @@ def skill_view(request, skill_slug):
     skill = models.Skill.objects.get(slug=skill_slug)
     if request.method == "GET":
         sentences = list(skill.sentences.all())
-        actions = models.Suggestion.Action.values
+        flags = models.Suggestion.Flag.values
         suggestions = models.Suggestion.objects.filter(skill=skill).all()
         return render(
             request,
             "skill.html",
-            {"skill": skill, "sentences": sentences, "actions": actions, 'suggestions': suggestions},
+            {"skill": skill, "sentences": sentences, "flags": flags, 'suggestions': suggestions},
         )
     else:
         data = request.POST
         user = request.user.is_authenticated and request.user or None
-        suggestion = models.Suggestion(user=user, skill=skill, action=data["action"], comments=data["comments"])
+        suggestion = models.Suggestion(user=user, skill=skill, flag=data["flag"], comments=data["comments"])
         suggestion.save()
         return redirect("skill", skill_slug=skill_slug)
