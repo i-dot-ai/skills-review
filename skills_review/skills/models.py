@@ -49,10 +49,13 @@ class Suggestion(models.Model):
     flag = models.CharField(max_length=256, choices=Flag.choices, blank=True, null=True)
     comments = models.TextField()
 
+    _error_flags = set([Flag.NOT_SKILL])
+    _warning_flags = set([Flag.WRONG_NAME, Flag.MULTIPLE_SKILLS, Flag.WRONG_CATEGORY])
+
     def save(self, *args, **kwargs):
-        if self.flag == self.Flag.NOT_SKILL:
+        if self.flag in self._error_flags:
             self.skill.has_delete_flag = True
-        elif self.flag == self.Flag.CHANGE_NAME:
+        elif self.flag in self._warning_flags:
             self.skill.has_rename_flag = True
         self.skill.save()
         return super().save(*args, **kwargs)
