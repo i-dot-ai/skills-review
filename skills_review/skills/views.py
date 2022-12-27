@@ -55,4 +55,5 @@ def initialize(request):
 def recommend_skills_from_job_title(request):
     job_title = request.POST["job-title"]
     skills = recommend.recommend_relevant_job_skills(job_title)
-    return JsonResponse({'skills': skills})
+    context = {'skills': skills, 'job_title': job_title}
+    return render(request, "recommend.html", context=context)
