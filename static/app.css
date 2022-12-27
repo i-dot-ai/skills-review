@@ -58,7 +58,7 @@ form.skill select {
   border: solid 1px #000;
 }
 
-form.skill textarea {
+form.skill input, form.skill textarea {
   border-radius: 4px;
   padding: 12px;
   border: solid 1px #000;
