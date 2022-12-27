@@ -13,6 +13,8 @@ RUN python3 -m pip install -U pip setuptools wheel
 COPY ./requirements.lock /app/requirements.lock
 RUN python3 -m pip install -r /app/requirements.lock --no-cache-dir
 
+RUN python3 -c 'from sentence_transformers import SentenceTransformer; SentenceTransformer("all-MiniLM-L6-v2")'
+
 COPY ./start.sh /start.sh
 RUN chmod +x /start.sh
 
