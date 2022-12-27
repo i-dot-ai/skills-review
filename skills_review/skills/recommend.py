@@ -123,7 +123,7 @@ def return_similar_title_skills(job_title, user_skills, job_embeddings):
     return returned_skills, returned_jobs
 
 
-def recommend_relevant_job_skills(user_query, job_title):
+def recommend_relevant_job_skills(job_title):
     """Given a Django request of user skills and job title, and returns a list of recommended skills for that title
 
     All existing users skill will be combined with a sample from nlp_generated_skills.json
