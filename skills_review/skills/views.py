@@ -1,8 +1,9 @@
 import random
 
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 
-from . import models
+from . import models, recommend
 
 
 def index_view(request):
@@ -42,3 +43,8 @@ def skill_view(request, skill_slug):
         suggestion = models.Suggestion(user=user, skill=skill, flag=data["flag"], comments=data["comments"])
         suggestion.save()
         return redirect("skill", skill_slug=skill_slug)
+
+
+def initialize(request):
+    recommend.create_job_title_embeddings()
+    return JsonResponse({'result': "Success"})
