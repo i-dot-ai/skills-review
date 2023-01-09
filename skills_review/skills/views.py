@@ -46,14 +46,9 @@ def skill_view(request, skill_slug):
         return redirect("skill", skill_slug=skill_slug)
 
 
-def initialize(request):
-    recommend.create_job_title_embeddings()
-    return JsonResponse({'result': "Success"})
-
-
 @csrf_exempt
 def recommend_skills_from_job_title(request):
     job_title = request.POST["job-title"]
-    skills = recommend.recommend_relevant_job_skills(job_title)
+    skills = recommend.get_job_skills(job_title)
     context = {'skills': skills, 'job_title': job_title}
     return render(request, "recommend.html", context=context)
