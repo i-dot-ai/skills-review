@@ -1,0 +1,358 @@
+@font-face {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/static/fonts/pxiDyp8kv8JHgFVrJJLmg1hVFteOYktMqlap.woff2)
+    format("woff2");
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8,
+    U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/static/fonts/pxiDyp8kv8JHgFVrJJLmg1hVGdeOYktMqlap.woff2)
+    format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/static/fonts/pxiDyp8kv8JHgFVrJJLmg1hVF9eOYktMqg.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/static/fonts/pxiDyp8kv8JHgFVrJJLmy15VFteOYktMqlap.woff2)
+    format("woff2");
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8,
+    U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/static/fonts/pxiDyp8kv8JHgFVrJJLmy15VGdeOYktMqlap.woff2)
+    format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/static/fonts/pxiDyp8kv8JHgFVrJJLmy15VF9eOYktMqg.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/static/fonts/pxiByp8kv8JHgFVrLGT9Z11lFd2JQEl8qw.woff2)
+    format("woff2");
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8,
+    U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/static/fonts/pxiByp8kv8JHgFVrLGT9Z1JlFd2JQEl8qw.woff2)
+    format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/static/fonts/pxiByp8kv8JHgFVrLGT9Z1xlFd2JQEk.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/static/fonts/pxiByp8kv8JHgFVrLCz7Z11lFd2JQEl8qw.woff2)
+    format("woff2");
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8,
+    U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/static/fonts/pxiByp8kv8JHgFVrLCz7Z1JlFd2JQEl8qw.woff2)
+    format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/static/fonts/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: inherit;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+.h1 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 123.5%;
+  letter-spacing: -1px;
+  font-family: Poppins, sans-serif;
+}
+#main {
+  margin-top: 3rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.card,
+.callout,
+fieldset {
+  border-radius: 12px;
+}
+
+.button,
+#etf input,
+#etf textarea,
+#etf select,
+.label {
+  border-radius: 4px;
+}
+
+.label {
+  margin-bottom: 0.125rem;
+}
+
+nav.sidebar {
+  margin: 1.25rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#etf nav.sidebar ul {
+  align-items: start;
+}
+
+#etf nav.sidebar li {
+  text-align: left;
+  margin: 0.25rem;
+}
+
+.completed i {
+  color: #3adb76;
+}
+
+.current i {
+  color: #1779ba;
+}
+
+ul.vertical.tabs {
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+body {
+  background-color: #e9eaec;
+  color: #000000de;
+  font-family: "Poppins", sans-serif;
+}
+
+.top-bar {
+  border-bottom: 3px solid #000;
+  margin: 0 16px;
+  padding: 16px 0;
+}
+
+.top-bar .button {
+  margin-left: 0.5rem;
+}
+
+.no-margin-bottom.button {
+  margin-bottom: 0;
+}
+
+.top-bar h2 a,
+.top-bar h2 {
+  color: #000000de;
+  margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 123.5%;
+  letter-spacing: -1px;
+  font-family: Poppins, sans-serif;
+}
+
+.top-bar a.button,
+.button {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+.top-bar h2 a:hover {
+  text-decoration: underline;
+  background-color: #0000000a;
+}
+
+.top-bar a.button:hover,
+.button:hover {
+  background-color: #666;
+}
+
+.top-bar a.button:focus,
+.button:focus {
+  background-color: #666;
+}
+
+.card .card-divider {
+  background-color: #fff;
+}
+
+.button-group .button {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+nav.sidebar:before {
+  height: 20px;
+  content: "";
+  background-color: #006157;
+  display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+nav.sidebar ul.vertical.tabs {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+section.inner {
+  padding: 20px;
+}
+
+section .fieldset {
+  background-color: #fff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border: none;
+}
+
+section fieldset.fieldset {
+  background-color: #fff;
+  padding: 20px 20px 4px 20px;
+  margin: 0;
+}
+
+section fieldset.fieldset legend {
+  float: left;
+  display: block;
+  width: 100%;
+}
+
+section fieldset.fieldset legend h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+section fieldset.fieldset label {
+  background-color: transparent;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: 0.15px;
+  color: #000000de;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-divider {
+  color: #000000de;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.wrapper {
+  background-color: #fff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 16px 16px 0 16px;
+}
+
+label[for="id_remember"] {
+  float: left;
+  margin-right: 10px;
+}
