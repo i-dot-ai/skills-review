@@ -18,7 +18,7 @@ def remove_bullets(text):
 async def get_job_skills(job_title):
     response = openai.Completion.create(
       model="text-davinci-003",
-      prompt=f"List 10 skills a {job_title} might have",
+      prompt=f"List the skills needed to be a {job_title}",
       temperature=0.7,
       max_tokens=256,
       top_p=1,
@@ -32,7 +32,7 @@ async def get_job_skills(job_title):
 
 async def get_job_image_url(job_title):
     response = openai.Image.create(
-      prompt=f"a cartoon of a civil servant pretending to be a {job_title}",
+      prompt=f"a cartoon of a diverse civil servant being a {job_title}",
       n=1,
       size="512x512"
     )
