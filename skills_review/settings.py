@@ -57,7 +57,10 @@ TEMPLATES = [
         "DIRS": [
             BASE_DIR / "skills_review" / "templates",
         ],
-        "OPTIONS": {"environment": "skills_review.jinja2.environment"},
+        "OPTIONS": {
+            "environment": "skills_review.jinja2.environment",
+            "extensions": ["pypugjs.ext.jinja.PyPugJSExtension"],
+        },
     },
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
