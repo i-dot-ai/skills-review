@@ -4,9 +4,11 @@ block content
 
     section.wrapper
 
-      h1 List the skills needed to be a:
-
       form(method="POST", action="/recommend-skills/")
         {{csrf_input}}
-        input#job-title(type='text' name='job-title')
-        input.button(type="submit")
+
+        .input-group
+          span.input-group-label List the skills needed to be a:
+          input.input-group-field(type='text' name='job-title')
+          .input-group-button
+            input.button(type='submit' value='Submit')
