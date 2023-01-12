@@ -8,7 +8,7 @@ from . import models, recommend
 
 
 def index_view(request):
-    return render(request, "index.html")
+    return render(request, "index.pug")
 
 
 def make_mapping(skills):

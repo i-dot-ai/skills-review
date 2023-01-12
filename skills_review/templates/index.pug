@@ -1,0 +1,12 @@
+extends base.pug
+
+block content
+
+    section.wrapper
+
+      h1 List the skills needed to be a:
+
+      form(method="POST", action="/recommend-skills/")
+        {{csrf_input}}
+        input#job-title(type='text' name='job-title')
+        input.button(type="submit")

@@ -1,0 +1,73 @@
+{% macro input(name, label, type='text') -%}
+  <label class="label {{errors.get(name) and 'is-invalid-label'}}" for="{{name}}">{{label}}</label>
+  <input type="{{type}}" class="{{errors.get(name) and 'is-invalid-input'}}" value="{{data.get(name)}}" id="{{name}}" name="{{name}}">
+  {% for error in errors.get(name, []) %}
+    <span class="form-error">{{error}}</span>
+  {% endfor %}
+{%- endmacro %}
+
+{% macro textarea(name, label) -%}
+  <label class="label {{errors.get(name) and 'is-invalid-label'}}" for="{{name}}">{{label}}</label>
+  <textarea class="{{errors.get(name) and 'is-invalid-input'}}" id="{{name}}" name="{{name}}">{{data.get(name)}}</textarea>
+  {% for error in errors.get(name, []) %}
+    <span class="form-error">{{error}}</span>
+  {% endfor %}
+{%- endmacro %}
+
+{% macro select(name, label, options, empty_option=DEFAULT) -%}
+  <div>
+    <label class="label {{errors.get(name) and 'is-invalid-label'}}" for="{{name}}">{{label}}</label>
+    <select name="{{name}}" id="{{name}}">
+      {% if not empty_option is sameas DEFAULT %}
+        <option disabled {{is_empty_selected(data, name)}}>{{empty_option}}</option>
+      {% endif %}
+      {% for option in options %}
+        <option value="{{option.value}}" {{is_selected(data, name, option.value)}}>{{option.text}}</option>
+      {% endfor %}
+    </select>
+  </div>
+{%- endmacro %}
+
+{% macro select_with_empty(name, label, options) -%}
+  {{select(name, label, options, empty_option="Please choose one...")}}
+{%- endmacro %}
+
+{% macro yes_no(name, label) -%}
+  {{select(name, label, options=({'text': 'Yes', 'value': True}, {'text': 'No', 'value': False}), empty_option="Please select...")}}
+{%- endmacro %}
+
+{% macro yes_no_partial(name, label) -%}
+  {{select(name, label, options=({'text': '', 'value': None}, {'text': 'Yes', 'value': 'Yes'}, {'text': 'No', 'value': 'No'}, {'text': 'Partial', 'value': 'Partial'}), empty_option=None)}}
+{%- endmacro %}
+
+{% macro checkbox(name, label) -%}
+  <input type="checkbox" class="{{errors.get(name) and 'is-invalid-input'}}" id="{{name}}" name="{{name}}" {{data.get(name) and 'checked' or ''}}>
+  <label class="label" for="{{name}}">{{label}}</label>
+{%- endmacro %}
+
+{% macro checkboxes(name, label, options) -%}
+  <fieldset>
+    <legend>{{label}}</legend>
+    <div class="grid-container">
+      <div class="grid-x large-up-4 medium-up-2">
+        {% for option in options %}
+          <div class="cell">
+            <input type="checkbox" class="{{errors.get(name) and 'is-invalid-input'}}" value="{{option.value}}" id="{{name}}_{{option.value}}" name="{{name}}" {{data.get(name) == option.value and 'checked' or ''}}>
+            <label class="label" for="{{name}}_{{option.value}}">{{option.text}}</label>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </fieldset>
+{%- endmacro %}
+
+{% macro buttons(prev_url) -%}
+  <a href="{{prev_url}}" class="button float-left"><i class="bi-caret-left"></i> Back</a>
+  <button type="submit" class="button float-right">Next <i class="bi-caret-right"></i></button>
+{%- endmacro%}
+
+{% macro callout(tags) -%}
+  <div class="callout {{tags}}" data-closable>
+    {{ caller() }}
+  </div>
+{%- endmacro %}
