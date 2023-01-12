@@ -15,7 +15,7 @@ def remove_bullets(text):
     return non_empty_lines
 
 
-def get_job_skills(job_title):
+async def get_job_skills(job_title):
     response = openai.Completion.create(
       model="text-davinci-003",
       prompt=f"List 10 skills a {job_title} might have",
@@ -30,7 +30,7 @@ def get_job_skills(job_title):
     return lines
 
 
-def get_job_image_url(job_title):
+async def get_job_image_url(job_title):
     response = openai.Image.create(
       prompt=f"a cartoon of a civil servant pretending to be a {job_title}",
       n=1,
