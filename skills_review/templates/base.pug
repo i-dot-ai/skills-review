@@ -15,17 +15,16 @@ html(lang="en")
       style.
 
     body#etf
+      div#main.grid-y.grid-frame
+        div.cell.auto
+        div.cell
 
-      nav.top-bar
-        div.top-bar-left
-          h2
-            a(href="/") i.AI Skills
+          div.grid-x
+            div.cell.medium-4.large-2
+            div.cell.medium-7.large-8
 
-      div#main.grid-x
-        div.cell.medium-4.large-3
-        div.cell.medium-7.large-6
+              section.inner
+                block content
 
-          section.inner
-            block content
-
-        div.cell.medium-0.large-3
+            div.cell.medium-0.large-2
+        div.cell.auto
