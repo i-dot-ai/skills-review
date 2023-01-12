@@ -85,7 +85,6 @@ WSGI_APPLICATION = "skills_review.wsgi.application"
 DATABASES = {
     "default": {
         **env.db("DATABASE_URL"),
-        **{"ATOMIC_REQUESTS": True},
     }
 }
 
