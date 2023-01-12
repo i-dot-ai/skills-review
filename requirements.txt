@@ -12,3 +12,5 @@ numpy
 pandas
 sentence_transformers
 openai
+pypugjs
+markdown-it-py
