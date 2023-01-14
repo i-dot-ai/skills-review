@@ -13,7 +13,7 @@ class User(BaseUser):
 
 
 class Recommendation(models.Model):
-    job_title = models.CharField(max_length=256, unique=True)
+    job_title = models.CharField(max_length=256)
     slug = models.CharField(max_length=256, unique=True, primary_key=True)
     skills = models.JSONField(default=list)
     image_url = models.CharField(max_length=256, unique=True)
