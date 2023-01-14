@@ -1,5 +1,5 @@
-from django.utils.text import slugify
 from django.shortcuts import redirect, render
+from django.utils.text import slugify
 
 from . import models, recommend
 
@@ -25,5 +25,9 @@ async def recommend_skills_from_job_title(request):
 
 def recommendation_view(request, slug):
     recommendation = models.Recommendation.get(slug=slug)
-    context = {"skills": recommendation.skills, "job_title": recommendation.job_title, "image_url": recommendation.image_url}
+    context = {
+        "skills": recommendation.skills,
+        "job_title": recommendation.job_title,
+        "image_url": recommendation.image_url,
+    }
     return render(request, "recommend.pug", context=context)
