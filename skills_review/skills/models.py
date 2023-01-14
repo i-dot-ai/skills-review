@@ -11,3 +11,12 @@ class User(BaseUser):
         self.email = self.email.lower()
         super().save(*args, **kwargs)
 
+
+class Recommendation(models.Model):
+    job_title = models.CharField(max_length=256, unique=True)
+    slug = models.CharField(max_length=256, unique=True, primary_key=True)
+    skills = models.JSONField(default=list)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name.replace("|", "_"))
+        return super().save(*args, **kwargs)
