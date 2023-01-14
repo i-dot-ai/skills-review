@@ -1,7 +1,7 @@
 import re
 
-from django.conf import settings
 import openai
+from django.conf import settings
 
 openai.api_key = settings.OPENAI_KEY
 
@@ -17,24 +17,22 @@ def remove_bullets(text):
 
 async def get_job_skills(job_title):
     response = openai.Completion.create(
-      model="text-davinci-003",
-      prompt=f"List the skills needed to be a {job_title}",
-      temperature=0.7,
-      max_tokens=256,
-      top_p=1,
-      frequency_penalty=0,
-      presence_penalty=0
+        model="text-davinci-003",
+        prompt=f"List the skills needed to be a {job_title}",
+        temperature=0.7,
+        max_tokens=256,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
     )
-    text = response['choices'][0]['text']
+    text = response["choices"][0]["text"]
     lines = remove_bullets(text)
     return lines
 
 
 async def get_job_image_url(job_title):
     response = openai.Image.create(
-      prompt=f"a cartoon of a diverse civil servant being a {job_title}",
-      n=1,
-      size="512x512"
+        prompt=f"a cartoon of a diverse civil servant being a {job_title}", n=1, size="512x512"
     )
-    image_url = response['data'][0]['url']
+    image_url = response["data"][0]["url"]
     return image_url
