@@ -19,5 +19,5 @@ class Recommendation(models.Model):
     image_url = models.CharField(max_length=2048)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name.replace("|", "_"))
+        self.slug = slugify(self.job_title.replace("|", "_"))
         return super().save(*args, **kwargs)
