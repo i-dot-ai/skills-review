@@ -16,7 +16,7 @@ class Recommendation(models.Model):
     job_title = models.CharField(max_length=256)
     slug = models.CharField(max_length=256, unique=True, primary_key=True)
     skills = models.JSONField(default=list)
-    image_url = models.CharField(max_length=256, unique=True)
+    image_url = models.CharField(max_length=2048)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name.replace("|", "_"))
