@@ -1,0 +1,13 @@
+extends base.pug
+
+block content
+
+  section.wrapper
+    div.grid-x
+      div.cell.auto
+        h1 To be a {{job_title}} you need:
+        ul.cloud
+        - for skill in skills
+          li {{skill}}
+      div.cell.auto
+        img(src=image_url)
