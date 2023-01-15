@@ -41,3 +41,18 @@ def recommendation_view(request, slug):
         "slug": recommendation.slug,
     }
     return render(request, "recommend.pug", context=context)
+
+
+def review_view(request, slug):
+    recommendation = models.Recommendation.objects.get(slug=slug)
+    context = {
+        "skills": recommendation.skills,
+        "job_title": recommendation.job_title,
+        "image_url": recommendation.image_url,
+        "slug": recommendation.slug,
+    }
+    return render(request, "review.pug", context=context)
+
+
+def success_view(request, slug):
+    return render(request, "success.pug")
