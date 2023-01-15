@@ -34,14 +34,14 @@ async def index_view(request):
 
 def recommendation_view(request, slug):
     recommendation = models.Recommendation.objects.get(slug=slug)
-    context = {'recommendation': recommendation}
+    context = {"recommendation": recommendation}
     return render(request, "recommend.pug", context=context)
 
 
 def review_view(request, slug):
     recommendation = models.Recommendation.objects.get(slug=slug)
     if request.method == "GET":
-        context = {'recommendation': recommendation}
+        context = {"recommendation": recommendation}
         return render(request, "review.pug", context=context)
     elif request.method == "POST":
         good_skills = set(request.POST.keys())

@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('skills', '0007_alter_recommendation_image_url'),
+        ("skills", "0007_alter_recommendation_image_url"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='recommendation',
-            name='bad_skills',
+            model_name="recommendation",
+            name="bad_skills",
             field=models.JSONField(default=list),
         ),
         migrations.AddField(
-            model_name='recommendation',
-            name='good_skills',
+            model_name="recommendation",
+            name="good_skills",
             field=models.JSONField(default=list),
         ),
     ]
