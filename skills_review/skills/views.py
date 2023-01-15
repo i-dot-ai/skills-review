@@ -38,5 +38,6 @@ def recommendation_view(request, slug):
         "skills": recommendation.skills,
         "job_title": recommendation.job_title,
         "image_url": recommendation.image_url,
+        "slug": recommendation.slug,
     }
     return render(request, "recommend.pug", context=context)
