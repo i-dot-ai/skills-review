@@ -29,7 +29,7 @@ async def index_view(request):
             skills = await recommend.get_job_skills(job_title)
             image_url = await recommend.get_job_image_url(job_title)
             await sync_to_async(save_recommendation)(job_title, skills, image_url)
-        return redirect(recommendation_view, slug=slug)
+        return redirect("recommendation", slug=slug)
 
 
 def recommendation_view(request, slug):
