@@ -4,7 +4,8 @@ extends base.pug
 block content
 
   section.wrapper
-    h1 Which skills were accurate?
+    h1 {{recommendation.job_title}}
+    h2 Which skills were accurate?
 
     form(method="POST")
       {{csrf_input}}
