@@ -40,8 +40,17 @@ def recommendation_view(request, slug):
 
 def review_view(request, slug):
     recommendation = models.Recommendation.objects.get(slug=slug)
-    context = {'recommendation': recommendation}
-    return render(request, "review.pug", context=context)
+    if request.method == "GET":
+        context = {'recommendation': recommendation}
+        return render(request, "review.pug", context=context)
+    elif request.method == "POST":
+        good_skills = set(request.POST.keys())
+        skills = set(recommendation.skills)
+        bad_skills = skills - good_skills
+        recommendation.good_skills = list(good_skills)
+        recommendation.bad_skills = list(bad_skills)
+        recommendation.save()
+        return redirect("thanks", slug=slug)
 
 
 def success_view(request, slug):
