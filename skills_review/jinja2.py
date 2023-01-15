@@ -36,6 +36,11 @@ def is_selected(data, name, value):
         return ""
 
 
+def url(path, *args, **kwargs):
+    assert not (args and kwargs)
+    return reverse(path, args=args, kwargs=kwargs)
+
+
 def environment(**options):
     extra_options = {"autoescape": True}
     env = jinja2.Environment(
@@ -48,7 +53,7 @@ def environment(**options):
     env.globals.update(
         {
             "static": static,
-            "url": reverse,
+            "url": url,
             "is_selected": is_selected,
             "is_empty_selected": is_empty_selected,
             "DEFAULT": DEFAULT,
