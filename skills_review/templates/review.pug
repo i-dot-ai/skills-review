@@ -10,7 +10,7 @@ block content
       {{csrf_input}}
       div.grid-x
 
-        - for skill in skills
+        - for skill in recommendation.skills
           div.large-3.cell
             +macros.checkbox(skill, skill)
 

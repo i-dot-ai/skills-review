@@ -34,23 +34,13 @@ async def index_view(request):
 
 def recommendation_view(request, slug):
     recommendation = models.Recommendation.objects.get(slug=slug)
-    context = {
-        "skills": recommendation.skills,
-        "job_title": recommendation.job_title,
-        "image_url": recommendation.image_url,
-        "slug": recommendation.slug,
-    }
+    context = {'recommendation': recommendation}
     return render(request, "recommend.pug", context=context)
 
 
 def review_view(request, slug):
     recommendation = models.Recommendation.objects.get(slug=slug)
-    context = {
-        "skills": recommendation.skills,
-        "job_title": recommendation.job_title,
-        "image_url": recommendation.image_url,
-        "slug": recommendation.slug,
-    }
+    context = {'recommendation': recommendation}
     return render(request, "review.pug", context=context)
 
 
