@@ -41,6 +41,8 @@
 {%- endmacro %}
 
 {% macro checkbox(name, label) -%}
+  {%- if errors is not defined %}{% set errors = {} %}{% endif -%}
+  {%- if data is not defined %}{% set data = {} %}{% endif -%}
   <input type="checkbox" class="{{errors.get(name) and 'is-invalid-input'}}" id="{{name}}" name="{{name}}" {{data.get(name) and 'checked' or ''}}>
   <label class="label" for="{{name}}">{{label}}</label>
 {%- endmacro %}
