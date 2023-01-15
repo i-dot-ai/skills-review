@@ -9,5 +9,8 @@ block content
         ul.cloud
         - for skill in skills
           li {{skill}}
+        a.alert.button(href=url("review", slug=slug)) These aren't right
+        a.success.button(href=url("thanks", slug=slug)) These look good
+
       div.cell.auto
         img(src=image_url)

@@ -1,0 +1,17 @@
+extends base.pug
+{% import 'macros.html' as macros with context %}
+
+block content
+
+  section.wrapper
+    h1 Which skills were accurate?
+
+    form(method="POST")
+      {{csrf_input}}
+      div.grid-x
+
+        - for skill in skills
+          div.large-3.cell
+            +macros.checkbox(skill, skill)
+
+      input(type='submit' value='Submit')
