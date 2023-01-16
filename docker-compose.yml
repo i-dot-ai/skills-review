@@ -12,6 +12,8 @@ services:
       - db
     env_file:
       - ./envs/web
+    environment:
+      - OPENAI_KEY
     volumes:
       - ./:/app/:z
     ports:

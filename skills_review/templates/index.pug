@@ -1,0 +1,10 @@
+extends base.pug
+
+block content
+
+    section.wrapper
+
+      form(method="POST")
+        {{csrf_input}}
+
+        +macros.input_group("job-title", "List the skills needed to be a:", with_submit=True)

@@ -1,0 +1,30 @@
+{% import 'macros.html' as macros with context %}
+
+doctype html
+html(lang="en")
+  head
+    head
+      meta(charset="UTF-8")
+      link(rel="icon", type="image/svg+xml", href="{{static('i-dot-ai/images/crown.svg')}}")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(http-equiv="x-ua-compatible", content="ie=edge")
+      title i.AI Skills
+      link(rel="stylesheet", href="{{static('foundation/css/foundation.css')}}")
+      link(rel="stylesheet", href="{{static('bootstrap-icons/bootstrap-icons.css')}}")
+      link(rel="stylesheet", href="{{static('i-dot-ai/base.css')}}")
+      style.
+
+    body#etf
+      div#main.grid-y.grid-frame
+        div.cell.auto
+        div.cell
+
+          div.grid-x
+            div.cell.medium-4.large-2
+            div.cell.medium-7.large-8
+
+              section.inner
+                block content
+
+            div.cell.medium-0.large-2
+        div.cell.auto

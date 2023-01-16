@@ -57,7 +57,10 @@ TEMPLATES = [
         "DIRS": [
             BASE_DIR / "skills_review" / "templates",
         ],
-        "OPTIONS": {"environment": "skills_review.jinja2.environment"},
+        "OPTIONS": {
+            "environment": "skills_review.jinja2.environment",
+            "extensions": ["pypugjs.ext.jinja.PyPugJSExtension"],
+        },
     },
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -85,7 +88,6 @@ WSGI_APPLICATION = "skills_review.wsgi.application"
 DATABASES = {
     "default": {
         **env.db("DATABASE_URL"),
-        **{"ATOMIC_REQUESTS": True},
     }
 }
 
@@ -142,3 +144,5 @@ ACCOUNT_USERNAME_REQUIRED = False
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = "skills"
+
+OPENAI_KEY = env.str("OPENAI_KEY")
