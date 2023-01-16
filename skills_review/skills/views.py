@@ -25,6 +25,9 @@ async def index_view(request):
     elif request.method == "POST":
         job_title = request.POST["job-title"]
         slug = slugify(job_title)
+        if not slug:
+            context = dict(errors={'job-title': ["Please enter a job title"]})
+            return render(request, "index.pug", context=context)
         if not await sync_to_async(recommendation_exists)(slug):
             skills = await recommend.get_job_skills(job_title)
             image_url = await recommend.get_job_image_url(job_title)
