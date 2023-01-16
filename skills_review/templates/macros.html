@@ -6,6 +6,25 @@
   {% endfor %}
 {%- endmacro %}
 
+{% macro input_group(name, label, type='text', with_submit=False) -%}
+  {%- if errors is not defined %}{% set errors = {} %}{% endif -%}
+  {%- if data is not defined %}{% set data = {} %}{% endif -%}
+
+  <div class="input-group">
+    <label class="input-group-label {{errors.get(name) and 'is-invalid-label'}}" for="{{name}}">{{label}}</label>
+    <input type="{{type}}" class="input-group-field {{errors.get(name) and 'is-invalid-input'}}" value="{{data.get(name)}}" id="{{name}}" name="{{name}}">
+
+    {% if with_submit %}
+      <div class="input-group-button">
+        <input type="submit" value="Submit" class="button">
+      </div>
+    {% endif %}
+  </div>
+  {% for error in errors.get(name, []) %}
+    <span class="form-error is-visible">{{error}}</span>
+  {% endfor %}
+{%- endmacro %}
+
 {% macro textarea(name, label) -%}
   <label class="label {{errors.get(name) and 'is-invalid-label'}}" for="{{name}}">{{label}}</label>
   <textarea class="{{errors.get(name) and 'is-invalid-input'}}" id="{{name}}" name="{{name}}">{{data.get(name)}}</textarea>

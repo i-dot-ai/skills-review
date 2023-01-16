@@ -7,8 +7,4 @@ block content
       form(method="POST")
         {{csrf_input}}
 
-        .input-group
-          span.input-group-label List the skills needed to be a:
-          input.input-group-field(type='text' name='job-title')
-          .input-group-button
-            input.button(type='submit' value='Submit')
+        +macros.input_group("job-title", "List the skills needed to be a:", with_submit=True)
