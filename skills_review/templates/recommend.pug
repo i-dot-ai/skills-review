@@ -3,14 +3,16 @@ extends base.pug
 block content
 
   section.wrapper
-    div.grid-x
+    div.grid-x.grid-margin-x
       div.cell.auto
         h1 To be a {{recommendation.job_title}} you need:
         ul.cloud
         - for skill in recommendation.skills
           li {{skill}}
-        a.alert.button(href=url("review", slug=recommendation.slug)) These aren't right
-        a.success.button(href=url("thanks", slug=recommendation.slug)) These look good
+        
+        div.ctas
+          a.alert.button(href=url("review", slug=recommendation.slug)) These aren't right
+          a.success.button(href=url("thanks", slug=recommendation.slug)) These look good
 
       div.cell.auto
         img(src=recommendation.image_url)
