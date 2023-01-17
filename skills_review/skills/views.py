@@ -47,11 +47,11 @@ def review_view(request, slug):
         context = {"recommendation": recommendation}
         return render(request, "review.pug", context=context)
     elif request.method == "POST":
-        good_skills = set(request.POST.keys())
+        incorrect_skills = set(request.POST.keys())
         skills = set(recommendation.skills)
-        bad_skills = skills - good_skills
-        recommendation.good_skills = list(good_skills)
-        recommendation.bad_skills = list(bad_skills)
+        correct_skills = skills - incorrect_skills
+        recommendation.good_skills = list(correct_skills)
+        recommendation.bad_skills = list(incorrect_skills)
         recommendation.save()
         return redirect("thanks", slug=slug)
 
