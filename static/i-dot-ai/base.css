@@ -356,3 +356,34 @@ label[for="id_remember"] {
   float: left;
   margin-right: 10px;
 }
+
+.ctas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px 0;
+}
+
+.ctas > a {
+  margin: 0;
+}
+
+ul.rec {
+  margin: 0;
+  padding: 8px 0 16px 0;
+  list-style: none;
+}
+
+ul.rec > li {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+
+ul.rec > li input[type="checkbox"] {
+  margin: 0;
+}
+
+ul.rec > li label.label {
+  white-space: normal;
+}

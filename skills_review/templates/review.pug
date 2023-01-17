@@ -9,10 +9,9 @@ block content
 
     form(method="POST")
       {{csrf_input}}
-      div.grid-x
-
+      ul.rec
         - for skill in recommendation.skills
-          div.large-3.cell
+          li
             +macros.checkbox(skill, skill)
 
       input.button.success.float-right(type='submit' value='Save')
