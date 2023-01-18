@@ -61,7 +61,7 @@ def review_view(request, slug):
         recommendation.good_skills = list(correct_skills)
         recommendation.bad_skills = list(incorrect_skills)
         recommendation.save()
-        return redirect("thanks", slug=slug)
+        return redirect("success", slug=slug)
 
 
 def success_view(request, slug):
