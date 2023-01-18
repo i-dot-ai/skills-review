@@ -15,4 +15,7 @@ block content
           a.success.button(href=url("thanks", slug=recommendation.slug)) These look good
 
       div.cell.auto
-        img(src=recommendation.image_url)
+        - if recommendation.image_url
+          img(src=recommendation.image_url)
+        - else
+          img(src=static('i-dot-ai/images/taxonomy-cartoon.png'))
