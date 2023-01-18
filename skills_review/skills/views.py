@@ -24,14 +24,15 @@ async def index_view(request):
         return render(request, "index.pug")
     elif request.method == "POST":
         job_title = request.POST["job-title"]
+        source = request.POST["source"]
         slug = slugify(job_title)
         if not slug:
             context = dict(errors={'job-title': ["Please enter a job title"]})
             return render(request, "index.pug", context=context)
-        if not await sync_to_async(recommendation_exists)(slug, "openai"):
+        if not await sync_to_async(recommendation_exists)(slug, source):
             skills = await recommend.get_job_skills(job_title)
             image_url = await recommend.get_job_image_url(job_title)
-            await sync_to_async(save_recommendation)(job_title, skills, image_url, "openai")
+            await sync_to_async(save_recommendation)(job_title, skills, image_url, source)
         return redirect("recommendation", slug=slug)
 
 
