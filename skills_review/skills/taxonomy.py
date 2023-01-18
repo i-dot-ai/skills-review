@@ -27,17 +27,18 @@ def get_job_embeddings(job_titles):
 
 
 def create_job_title_embeddings():
-    skill_sample_size = 10000
+    if not pickle_file.exists():
+        skill_sample_size = 10000
 
-    nlp_jobs_df = pd.read_json(nlp_json_file)[["user_id", "job_title"]].iloc[0:skill_sample_size]
-    df = nlp_jobs_df.copy()
+        nlp_jobs_df = pd.read_json(nlp_json_file)[["user_id", "job_title"]].iloc[0:skill_sample_size]
+        df = nlp_jobs_df.copy()
 
-    # converts to numpy array for speed
-    unique_job_titles = df.drop_duplicates(subset=["job_title"]).dropna(axis=0)["job_title"].to_numpy()
-    embeddings = get_job_embeddings(unique_job_titles)
+        # converts to numpy array for speed
+        unique_job_titles = df.drop_duplicates(subset=["job_title"]).dropna(axis=0)["job_title"].to_numpy()
+        embeddings = get_job_embeddings(unique_job_titles)
 
-    # todo - add to database in some way
-    embeddings.to_pickle(pickle_file)
+        # todo - add to database in some way
+        embeddings.to_pickle(pickle_file)
 
 
 def return_similar_title_skills(job_title, user_skills, job_embeddings):
