@@ -19,15 +19,16 @@ def save_recommendation(job_title, skills, image_url, source):
     return recommendation
 
 
-async def index_view(request):
+async def index_view(request, source="openai"):
     if request.method == "GET":
-        return render(request, "index.pug")
+        context = {'source': source}
+        return render(request, "index.pug", context=context)
     elif request.method == "POST":
         job_title = request.POST["job-title"]
         source = request.POST["source"]
         slug = slugify(job_title)
         if not slug:
-            context = dict(errors={'job-title': ["Please enter a job title"]})
+            context = dict(errors={'job-title': ["Please enter a job title"]}, source=source)
             return render(request, "index.pug", context=context)
         if not await sync_to_async(recommendation_exists)(slug, source):
             skills = await recommend.get_job_skills(job_title)
