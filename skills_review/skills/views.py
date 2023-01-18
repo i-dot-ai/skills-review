@@ -65,4 +65,6 @@ def review_view(request, slug):
 
 
 def success_view(request, slug):
+    recommendation = models.Recommendation.objects.get(slug=slug)
+    context = {'source': recommendation.source}
     return render(request, "success.pug")
