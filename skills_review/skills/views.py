@@ -48,6 +48,8 @@ def review_view(request, slug):
         return render(request, "review.pug", context=context)
     elif request.method == "POST":
         incorrect_skills = set(request.POST.keys())
+        if (incorrect_skills.__contains__('csrfmiddlewaretoken')):
+            incorrect_skills.remove('csrfmiddlewaretoken')
         skills = set(recommendation.skills)
         correct_skills = skills - incorrect_skills
         recommendation.good_skills = list(correct_skills)
