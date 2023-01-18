@@ -17,7 +17,7 @@ class Recommendation(models.Model):
     slug = models.CharField(max_length=256, unique=True, primary_key=True)
     source = models.CharField(max_length=32, choices=(("openai","openai"),("taxonomy", "taxonomy")))
     skills = models.JSONField(default=list)
-    image_url = models.CharField(max_length=2048)
+    image_url = models.CharField(max_length=2048, null=True, blank=True)
     good_skills = models.JSONField(default=list)
     bad_skills = models.JSONField(default=list)
 
