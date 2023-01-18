@@ -5,11 +5,11 @@ from django.utils.text import slugify
 from . import models, recommend
 
 
-def recommendation_exists(slug):
-    return models.Recommendation.objects.filter(slug=slug).exists()
+def recommendation_exists(slug, source):
+    return models.Recommendation.objects.filter(slug=slug, source=source).exists()
 
 
-def save_recommendation(job_title, skills, image_url):
+def save_recommendation(job_title, skills, image_url, source):
     recommendation = models.Recommendation(
         job_title=job_title,
         skills=skills,
@@ -28,10 +28,10 @@ async def index_view(request):
         if not slug:
             context = dict(errors={'job-title': ["Please enter a job title"]})
             return render(request, "index.pug", context=context)
-        if not await sync_to_async(recommendation_exists)(slug):
+        if not await sync_to_async(recommendation_exists)(slug, "openai"):
             skills = await recommend.get_job_skills(job_title)
             image_url = await recommend.get_job_image_url(job_title)
-            await sync_to_async(save_recommendation)(job_title, skills, image_url)
+            await sync_to_async(save_recommendation)(job_title, skills, image_url, "openai")
         return redirect("recommendation", slug=slug)
 
 
