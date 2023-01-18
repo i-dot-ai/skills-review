@@ -9,7 +9,7 @@ block content
         ul.cloud
         - for skill in recommendation.skills
           li {{skill}}
-        
+
         div.ctas
           a.alert.button(href=url("review", slug=recommendation.slug)) These aren't right
           a.success.button(href=url("thanks", slug=recommendation.slug)) These look good
