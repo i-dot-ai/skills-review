@@ -2,7 +2,7 @@ from asgiref.sync import sync_to_async
 from django.shortcuts import redirect, render
 from django.utils.text import slugify
 
-from . import models, recommend
+from . import models, recommend, taxonomy
 
 
 def recommendation_exists(slug, source):
@@ -31,8 +31,12 @@ async def index_view(request, source="openai"):
             context = dict(errors={'job-title': ["Please enter a job title"]}, source=source)
             return render(request, "index.pug", context=context)
         if not await sync_to_async(recommendation_exists)(slug, source):
-            skills = await recommend.get_job_skills(job_title)
-            image_url = await recommend.get_job_image_url(job_title)
+            if source == "openai":
+                skills = await recommend.get_job_skills(job_title)
+                image_url = await recommend.get_job_image_url(job_title)
+            else:
+                skills = taxonomy.recommend_relevant_job_skills(job_title)
+                image_url = None
             await sync_to_async(save_recommendation)(job_title, skills, image_url, source)
         return redirect("recommendation", slug=slug)
 
