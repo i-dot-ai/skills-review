@@ -1,6 +1,6 @@
 ---
 applications:
 - name: skills-review-develop
-  memory: 512M
+  memory: 2048M
   buildpacks:
   - python_buildpack
