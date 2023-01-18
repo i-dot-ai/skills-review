@@ -7,4 +7,5 @@ block content
       form(method="POST")
         {{csrf_input}}
 
+        <input type="hidden" name="source" value="{{source|default('openai')}}">
         +macros.input_group("job-title", "List the skills needed to be a:", with_submit=True)
