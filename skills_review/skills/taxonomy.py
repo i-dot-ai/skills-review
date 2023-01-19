@@ -44,21 +44,14 @@ def create_job_title_embeddings():
 def return_similar_title_skills(job_title, user_skills, job_embeddings):
     skill_count = 10
     model_name = "all-MiniLM-L6-v2"
-    missing_ratings = False
 
     if job_title not in job_embeddings.index.to_list():
         user_skills = user_skills[user_skills["job_title"] != job_title].copy()
 
     unique_job_titles = user_skills.drop_duplicates(subset=["job_title"]).dropna(axis=0)["job_title"].to_numpy()
 
-    if missing_ratings:
-        skills_to_dummy = user_skills[["user_id", "skill_name"]]
-        long_skills = skills_to_dummy.copy().rename(columns={"user_id": "user_id"})
-        long_skills["rating"] = 1
-
-    else:
-        skills_to_dummy = user_skills[["user_id", "skill_name", "rating"]]
-        long_skills = skills_to_dummy.copy().rename(columns={"user_id": "user_id"})
+    skills_to_dummy = user_skills[["user_id", "skill_name", "rating"]]
+    long_skills = skills_to_dummy.copy().rename(columns={"user_id": "user_id"})
 
     if job_title is None:
         top_skills = (
