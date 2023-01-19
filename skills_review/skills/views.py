@@ -21,14 +21,14 @@ def save_recommendation(job_title, skills, image_url, source):
 
 async def index_view(request, source="openai"):
     if request.method == "GET":
-        context = {'source': source}
+        context = {"source": source}
         return render(request, "index.pug", context=context)
     elif request.method == "POST":
         job_title = request.POST["job-title"]
         source = request.POST["source"]
         slug = slugify(job_title)
         if not slug:
-            context = dict(errors={'job-title': ["Please enter a job title"]}, source=source)
+            context = dict(errors={"job-title": ["Please enter a job title"]}, source=source)
             return render(request, "index.pug", context=context)
         if not await sync_to_async(recommendation_exists)(slug, source):
             if source == "openai":
@@ -54,8 +54,8 @@ def review_view(request, slug):
         return render(request, "review.pug", context=context)
     elif request.method == "POST":
         incorrect_skills = set(request.POST.keys())
-        if (incorrect_skills.__contains__('csrfmiddlewaretoken')):
-            incorrect_skills.remove('csrfmiddlewaretoken')
+        if incorrect_skills.__contains__("csrfmiddlewaretoken"):
+            incorrect_skills.remove("csrfmiddlewaretoken")
         skills = set(recommendation.skills)
         correct_skills = skills - incorrect_skills
         recommendation.good_skills = list(correct_skills)
@@ -66,5 +66,5 @@ def review_view(request, slug):
 
 def success_view(request, slug):
     recommendation = models.Recommendation.objects.get(slug=slug)
-    context = {'source': recommendation.source}
+    context = {"source": recommendation.source}
     return render(request, "success.pug")

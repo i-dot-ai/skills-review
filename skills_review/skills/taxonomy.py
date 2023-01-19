@@ -2,15 +2,13 @@ import pathlib
 
 import numpy as np
 import pandas as pd
-
 from sentence_transformers import SentenceTransformer
 
-
 __here__ = pathlib.Path(__file__).parent
-data_dir = __here__ / ".." / ".."/"data"
+data_dir = __here__ / ".." / ".." / "data"
 
 nlp_json_file = data_dir / "nlp_generated_skills.json"
-pickle_file = data_dir/"job_title_embeddings.pkl"
+pickle_file = data_dir / "job_title_embeddings.pkl"
 
 assert nlp_json_file.exists()
 

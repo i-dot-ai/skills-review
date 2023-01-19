@@ -6,14 +6,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('skills', '0008_auto_20230115_1254'),
+        ("skills", "0008_auto_20230115_1254"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='recommendation',
-            name='source',
-            field=models.CharField(choices=[('openai', 'openai'), ('taxonomy', 'taxonomy')], default='openai', max_length=32),
+            model_name="recommendation",
+            name="source",
+            field=models.CharField(
+                choices=[("openai", "openai"), ("taxonomy", "taxonomy")], default="openai", max_length=32
+            ),
             preserve_default=False,
         ),
     ]

@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('skills', '0009_recommendation_source'),
+        ("skills", "0009_recommendation_source"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='recommendation',
-            name='image_url',
+            model_name="recommendation",
+            name="image_url",
             field=models.CharField(blank=True, max_length=2048, null=True),
         ),
     ]
