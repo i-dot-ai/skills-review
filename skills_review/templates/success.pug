@@ -5,4 +5,7 @@ block content
   section.wrapper
     h1 Thanks for your feedback
     p We hope you found this interesting.
-    a.button(href=url("index")) Try another job
+    - if source == 'openai'
+      a.button(href=url("index")) Try another job
+    - else
+      a.button(href=url("taxonomy")) Try another job

@@ -9,10 +9,13 @@ block content
         ul.cloud
         - for skill in recommendation.skills
           li {{skill}}
-        
+
         div.ctas
           a.alert.button(href=url("review", slug=recommendation.slug)) These aren't right
-          a.success.button(href=url("thanks", slug=recommendation.slug)) These look good
+          a.success.button(href=url("success", slug=recommendation.slug)) These look good
 
       div.cell.auto
-        img(src=recommendation.image_url)
+        - if recommendation.image_url
+          img(src=recommendation.image_url)
+        - else
+          img(src=static('i-dot-ai/images/taxonomy-cartoon.png'))
